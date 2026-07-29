@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consulting Deck Studio Preview</title>
+<style>
+:root{--navy:#132331;--red:#a4001d;--warm:#f6f1e8;--ink:#22292f;--muted:#625f5a;--rule:#ddd4c7;--white:#fff}*{box-sizing:border-box}body{margin:0;background:#0c171f;font-family:Arial,"PingFang SC",sans-serif;color:var(--ink);overflow:hidden}.deck{height:100vh;display:grid;grid-template-columns:76px 1fr}.rail{background:#0a1822;color:#fff;display:flex;flex-direction:column;align-items:center;padding:26px 0 20px;border-right:1px solid #28404f}.brand{writing-mode:vertical-rl;letter-spacing:.18em;font-size:14px;font-weight:700;opacity:.6;margin-bottom:auto}.dots{display:grid;gap:12px}.dot{border:0;background:transparent;color:#fff;font:700 14px Arial;width:34px;height:34px;cursor:pointer;opacity:.45}.dot.active{background:var(--red);opacity:1}.slides{position:relative;min-width:0}.slide{display:none;position:absolute;inset:0;padding:4.5vh 5vw 5.5vh;background:var(--warm);overflow:auto}.slide.active{display:block}.slide.dark{background:var(--navy);color:#fff}.kicker{font-size:14px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:12px}.dark .kicker{color:#ff8c9d}.slide h1{font-size:clamp(30px,3.4vw,56px);line-height:1.02;margin:0;max-width:1040px;letter-spacing:-.035em}.sub{font-size:18px;line-height:1.45;color:var(--muted);max-width:960px;margin:14px 0 26px}.dark .sub{color:#b9c5ca}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.stage{border-top:5px solid var(--red);padding:18px 18px 20px;background:#fff;min-height:270px}.dark .stage{background:#1a303e;border-color:#ff5c73}.stage .year{font-size:14px;color:var(--red);font-weight:700}.dark .stage .year{color:#ff8c9d}.stage h2{font-size:25px;margin:24px 0 10px}.stage p,.stage li{font-size:18px;line-height:1.4}.stage ul{padding-left:20px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);margin-top:18px}.metric{background:#fff;padding:20px;text-align:center}.dark .metric{background:#1a303e}.metric b{display:block;font-size:32px;color:var(--red);margin-bottom:6px}.dark .metric b{color:#ff8c9d}.metric span{font-size:16px;color:var(--muted)}.dark .metric span{color:#b9c5ca}.roadmap{margin-top:18px;border-top:1px solid var(--rule)}.road{display:grid;grid-template-columns:150px repeat(5,1fr);align-items:center;border-bottom:1px solid var(--rule);min-height:58px}.road>*{padding:12px;font-size:16px}.road .label{font-weight:700}.bar{height:28px;background:#ddd}.bar.on{background:var(--navy);color:white;text-align:center;font-weight:700}.bar.ai{background:var(--red)}.bar.scale{background:#ef6b6b}.synthesis{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;margin-top:30px}.logic{display:grid;gap:14px}.logic-row{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:start;border-top:1px solid #445a66;padding-top:14px}.logic-row b{font-size:28px;color:#ff8c9d}.logic-row p{font-size:18px;margin:0;line-height:1.4}.ask{background:var(--red);padding:28px;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between}.ask .money{font-size:48px;font-weight:800}.ask p{font-size:18px;line-height:1.45}.foot{position:absolute;left:5vw;right:5vw;bottom:18px;display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}.dark .foot{color:#92a3ab}.controls{position:fixed;right:18px;bottom:16px;display:flex;gap:8px;z-index:9}.controls button{border:1px solid #fff4;background:#0a1822;color:#fff;width:38px;height:38px;cursor:pointer}@media(max-width:800px){body{overflow:auto}.deck{grid-template-columns:1fr}.rail{display:none}.slides{min-height:100vh}.slide{position:relative;min-height:100vh;padding:28px 22px 70px}.slide:not(.active){display:none}.grid3,.metrics,.synthesis{grid-template-columns:1fr}.road{grid-template-columns:105px repeat(5,1fr)}.road>*{padding:6px;font-size:14px}.foot{position:static;margin-top:26px}.controls{position:fixed}}
+</style>
+</head>
+<body>
+<main class="deck">
+  <aside class="rail"><div class="brand">CONSULTING DECK STUDIO · MODE C</div><nav class="dots" aria-label="页面"><button class="dot active" data-go="0">01</button><button class="dot" data-go="1">02</button><button class="dot" data-go="2">03</button></nav></aside>
+  <section class="slides">
+    <section class="slide dark active" data-layout="C19" data-density="medium" data-reset="true">
+      <div class="kicker">C19 · Operating Model</div><h1>AI 把四个 Pilot 从一次性动作，升级为可复制的城市 Playbook</h1><p class="sub">先低成本验证，再本地蒸馏，最后固化为 Playbook JSON；每一阶段都服务于更精准、更自动的运营决策。</p>
+      <div class="grid3">
+        <section class="stage"><div class="year">2026 H1–H2</div><h2>01 验证</h2><p><b>LongCat</b><br>开源、近零 token 成本</p><ul><li>P1 补贴分层</li><li>P2 个性化交叉推荐</li></ul></section>
+        <section class="stage"><div class="year">FROM 2026 Q3</div><h2>02 蒸馏</h2><p><b>DeepSeek V3 → 7B</b><br>本地部署、实时决策</p><ul><li>P1 自动补贴</li><li>P2 实时推荐</li><li>P3 调度与补货</li></ul></section>
+        <section class="stage"><div class="year">2027–2028</div><h2>03 固化</h2><p><b>Playbook JSON</b><br>编码反复验证的规则</p><ul><li>新城市加载徐州经验</li><li>18 个月盈亏平衡目标</li></ul></section>
+      </div>
+      <div class="metrics"><div class="metric"><b>¥3M</b><span>AI 总投入</span></div><div class="metric"><b>¥9–13M</b><span>额外利润贡献</span></div><div class="metric"><b>36 → 18月</b><span>新城市盈亏平衡</span></div></div>
+      <div class="foot"><span>来源：用户提供的 Page 10–12 讲稿；全部数字为 Team estimate / Proposed target</span><span>01 / 03</span></div>
+    </section>
+    <section class="slide light" data-layout="C15" data-density="high">
+      <div class="kicker">C15 · Timeline / Roadmap</div><h1>2026 先止血，2027 开始放大，2030 完成城市组合复制</h1><p class="sub">四个 Pilot 并行启动，但扩张必须经过量化关口；AI 是放大器，而不是先于运营改善的独立项目。</p>
+      <div class="roadmap">
+        <div class="road"><div class="label">工作流</div><div>2026 H1</div><div>2026 H2</div><div>2027</div><div>2028</div><div>2030</div></div>
+        <div class="road"><div class="label">P1 补贴</div><div class="bar on">BUILD</div><div class="bar on">BUILD</div><div class="bar on">RUN</div><div class="bar"></div><div class="bar"></div></div>
+        <div class="road"><div class="label">P2 品类</div><div class="bar on">BUILD</div><div class="bar on">BUILD</div><div class="bar on">RUN</div><div class="bar"></div><div class="bar"></div></div>
+        <div class="road"><div class="label">P3 暗仓</div><div class="bar on">BUILD</div><div class="bar on">BUILD</div><div class="bar on">RUN</div><div class="bar"></div><div class="bar"></div></div>
+        <div class="road"><div class="label">P4 AI</div><div class="bar on ai">BUILD</div><div class="bar on ai">BUILD</div><div class="bar on ai">RUN</div><div class="bar on ai">RUN</div><div class="bar on ai">RUN</div></div>
+        <div class="road"><div class="label">城市复制</div><div class="bar"></div><div class="bar"></div><div class="bar scale">SCALE</div><div class="bar scale">SCALE</div><div class="bar scale">SCALE</div></div>
+      </div>
+      <div class="metrics"><div class="metric"><b>¥42–54M</b><span>2026 年化改善</span></div><div class="metric"><b>+¥18M</b><span>2028 徐州盈利</span></div><div class="metric"><b>4 + 12–15</b><span>冠军城市 + 卫星城</span></div></div>
+      <div class="foot"><span>阶段门：当年亏损减半 → 单笔贡献 +15–20% → 徐州盈利 → 组合复制</span><span>02 / 03</span></div>
+    </section>
+    <section class="slide dark" data-layout="C22" data-density="medium" data-reset="true">
+      <div class="kicker">C22 · Final Synthesis</div><h1>批准 1,250 万投入，启动徐州 Turnaround Lab</h1><p class="sub">徐州不是结构性破损，而是经济分配低效；三个 Pilot 修复漏洞，AI Playbook 把经验转化为可复制资产。</p>
+      <div class="synthesis"><div class="logic"><div class="logic-row"><b>01</b><p><strong>修复经济分配</strong><br>P1 补贴、P2 品类与 P3 暗仓，直击三大利润漏洞。</p></div><div class="logic-row"><b>02</b><p><strong>编码运营学习</strong><br>P4 将有效规则固化，让补贴更精准、推荐更个性、履约更智能。</p></div><div class="logic-row"><b>03</b><p><strong>带门槛规模化</strong><br>通过量化关口，把徐州 turnaround 复制到工业型 Tier 3 城市。</p></div></div><aside class="ask"><div><div class="kicker">APPROVAL ASK</div><div class="money">RMB 12.5M</div></div><p>最大风险：竞争对手反补贴，预计影响 800–1,200 万。建议储备 1,500 万防御能力，以服务权益保护高价值用户，避免现金战。</p></aside></div>
+      <div class="foot"><span>结论：先止血，再放大，最后规模化</span><span>03 / 03</span></div>
+    </section>
+  </section>
+</main>
+<div class="controls"><button id="fullscreen" aria-label="全屏">⛶</button><button id="prev" aria-label="上一页">←</button><button id="next" aria-label="下一页">→</button></div>
+<script>const slides=[...document.querySelectorAll('.slide')],dots=[...document.querySelectorAll('.dot')];let i=0;function show(n){i=(n+slides.length)%slides.length;slides.forEach((s,j)=>s.classList.toggle('active',j===i));dots.forEach((d,j)=>d.classList.toggle('active',j===i))}document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(+b.dataset.go));prev.onclick=()=>show(i-1);next.onclick=()=>show(i+1);fullscreen.onclick=()=>document.documentElement.requestFullscreen?.();addEventListener('keydown',e=>{if(['ArrowRight','PageDown'].includes(e.key))show(i+1);if(['ArrowLeft','PageUp'].includes(e.key))show(i-1);if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()});</script>
+</body></html>
