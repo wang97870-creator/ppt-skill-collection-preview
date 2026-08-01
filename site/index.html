@@ -13,7 +13,7 @@
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090909;
@@ -108,6 +108,7 @@
       position: relative; min-height: 100svh; overflow: hidden;
       display: flex; align-items: end; padding: 150px clamp(22px, 5vw, 78px) 54px;
       border-bottom: 1px solid var(--line);
+      isolation: isolate;
     }
     .hero-media { position: absolute; inset: 0; background: #000; }
     .hero-media::after {
@@ -129,7 +130,7 @@
       background-size: 5px 5px;
       mask-image: linear-gradient(to bottom, #000, transparent 75%);
     }
-    .hero-inner { position: relative; z-index: 2; width: 100%; }
+    .hero-inner { position: relative; z-index: 3; width: 100%; }
     .hero-meta {
       display: flex; justify-content: space-between; align-items: center; gap: 24px;
       padding-bottom: 18px; border-bottom: 1px solid var(--line);
@@ -140,9 +141,10 @@
       content: ""; width: 7px; height: 7px; border-radius: 50%;
       background: var(--blue-a); box-shadow: 0 0 18px var(--blue-a);
     }
+    .hero-content { position: relative; z-index: 4; width: min(58vw, 900px); }
     .hero-title {
-      max-width: 1300px; margin: clamp(38px, 7vh, 82px) 0 26px;
-      font-family: var(--serif); font-size: clamp(80px, 12.3vw, 190px);
+      max-width: 900px; margin: clamp(34px, 6vh, 68px) 0 26px;
+      font-family: var(--serif); font-size: clamp(76px, 8.25vw, 138px);
       font-weight: 400; font-style: italic; line-height: .94; letter-spacing: -.065em;
     }
     .hero-title span {
@@ -151,12 +153,12 @@
       transform: translateX(clamp(26px, 10vw, 150px));
     }
     .hero-bottom {
-      display: grid; grid-template-columns:minmax(0, 1.25fr) minmax(280px, .75fr); gap: clamp(28px, 8vw, 120px);
+      display: grid; grid-template-columns: 1fr; gap: 22px;
       align-items: end;
     }
     .lead { max-width: 840px; margin: 0; color: #d1d1ce; font-size: clamp(17px, 1.65vw, 23px); line-height: 1.55; }
     .lead strong { color: #fff; }
-    .hero-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 10px; }
     .pill {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       min-height: 46px; padding: 0 18px; border: 1px solid var(--line-strong); border-radius: 999px;
@@ -166,6 +168,74 @@
     }
     .pill:hover, .pill:focus-visible { transform: translateY(-2px); border-color: rgba(255,255,255,.45); outline: none; }
     .pill.primary { border: 0; color: #08111a; background: linear-gradient(135deg, var(--blue-a), #d7e3ed); }
+
+    .hero-cat {
+      --cat-rx: 0deg;
+      --cat-ry: 0deg;
+      --cat-rz: 0deg;
+      --cat-tx: 0px;
+      --cat-ty: 0px;
+      --eye-x: 0px;
+      --eye-y: 0px;
+      position: absolute; z-index: 2; right: clamp(-78px, -3.2vw, -24px); bottom: -7vh;
+      width: min(46vw, 730px); height: min(86vh, 900px);
+      pointer-events: none; user-select: none;
+    }
+    .hero-cat::before {
+      content: ""; position: absolute; z-index: -1;
+      width: 78%; aspect-ratio: 1; right: 4%; top: 25%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(210,218,225,.22), rgba(78,133,191,.08) 47%, transparent 72%);
+      filter: blur(34px);
+    }
+    .cat-rig {
+      position: absolute; inset: 0; transform-origin: 52% 82%;
+      animation: catBreathe 7s ease-in-out infinite;
+    }
+    .cat-canvas {
+      position: absolute; left: 50%; bottom: 0; height: 100%; max-width: 100%;
+      aspect-ratio: 2 / 3; transform: translateX(-50%);
+    }
+    .cat-layer {
+      position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+      object-fit: fill;
+      pointer-events: none; user-select: none; -webkit-user-drag: none;
+      filter: saturate(.68) contrast(1.04) brightness(.93) drop-shadow(0 0 1px rgba(0,0,0,.72));
+    }
+    .cat-body {
+      z-index: 1;
+      filter: saturate(.66) contrast(1.03) brightness(.92) drop-shadow(0 0 1px rgba(0,0,0,.72)) drop-shadow(0 28px 34px rgba(0,0,0,.28));
+    }
+    .cat-head-rig {
+      position: absolute; inset: 0; z-index: 3;
+      transform-origin: 50% 67%;
+      transform: perspective(960px) translate3d(var(--cat-tx), var(--cat-ty), 0) rotateZ(var(--cat-rz)) rotateX(var(--cat-rx)) rotateY(var(--cat-ry));
+      will-change: transform;
+    }
+    .cat-head { z-index: 2; }
+    .cat-eye {
+      position: absolute; z-index: 4; overflow: hidden; border-radius: 50%;
+      background:
+        radial-gradient(circle at 43% 36%, rgba(255,255,255,.88) 0 7%, transparent 8%),
+        radial-gradient(circle at 50% 50%, #73abc4 0 18%, #356f8a 47%, #102b3a 76%, #03090d 100%);
+      box-shadow: inset 0 0 3px 1px rgba(0,0,0,.9), 0 0 1px rgba(205,236,247,.45);
+    }
+    .cat-eye-left { left: 40.9%; top: 48.05%; width: 5.25%; height: 3.55%; transform: rotate(2deg); }
+    .cat-eye-right { left: 54.35%; top: 50.45%; width: 5.1%; height: 3.25%; transform: rotate(11deg); }
+    .cat-pupil {
+      position: absolute; left: 50%; top: 50%; width: 34%; height: 72%;
+      border-radius: 50%; background: radial-gradient(ellipse at 50% 42%, #13222b 0 12%, #030506 54%, #000 100%);
+      box-shadow: 0 0 2px rgba(0,0,0,.95);
+      transform: translate(calc(-50% + var(--eye-x)), calc(-50% + var(--eye-y)));
+      will-change: transform;
+    }
+    .cat-pupil::after {
+      content: ""; position: absolute; width: 32%; aspect-ratio: 1; left: 4%; top: 9%;
+      border-radius: 50%; background: rgba(255,255,255,.92); filter: blur(.2px);
+    }
+    @keyframes catBreathe {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.008) translateY(-3px); }
+    }
 
     .section { padding: clamp(80px, 11vw, 150px) clamp(20px, 5vw, 78px); }
     .intro { display: grid; grid-template-columns: minmax(420px, .85fr) minmax(0, 1.15fr); gap: clamp(50px, 8vw, 130px); }
@@ -298,23 +368,31 @@
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    @keyframes heroDrift { from { transform: scale(1.11); } to { transform: scale(1.05); } }
     @keyframes glowFloat { from { transform: translate3d(0,0,0); } to { transform: translate3d(-5vw,4vh,0); } }
 
     @media (max-width: 1050px) {
       .project-1, .project-2, .project-3, .project-4 { grid-column: span 6; }
-      .hero-title { font-size: clamp(75px, 14vw, 140px); }
-      .hero-bottom { grid-template-columns: 1fr; }
-      .hero-actions { justify-content: flex-start; }
+      .hero-content { width: 59vw; }
+      .hero-title { font-size: clamp(70px, 9.5vw, 112px); }
+      .hero-cat { right: -8vw; width: 49vw; }
       .intro { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
       .nav-shell { top: 12px; }
       .nav-links a:not(.repo-link) { display: none; }
-      .hero { padding-top: 125px; }
+      .hero { min-height: auto; display: block; padding-top: 125px; padding-bottom: 0; }
       .hero-meta span:last-child { display: none; }
-      .hero-title { margin-top: 70px; font-size: clamp(64px, 18vw, 110px); line-height: 1.02; }
+      .hero-content { width: 100%; }
+      .hero-title { margin-top: 54px; font-size: clamp(64px, 18vw, 110px); line-height: 1.02; }
       .hero-title span { transform: translateX(0); }
+      .hero-cat {
+        position: relative; right: auto; bottom: auto; width: 100%; height: min(69svh, 660px);
+        margin: 20px auto -3vh;
+      }
+      .hero-cat::before { width: 90%; right: 5%; top: 20%; }
+      .cat-rig { animation: none; }
+      .cat-head-rig { transform: none; will-change: auto; }
+      .cat-pupil { transform: translate(-50%, -50%); will-change: auto; }
       .intro { grid-template-columns: 1fr; }
       .intro-copy { max-width: none; }
       .section-head { align-items: start; flex-direction: column; }
@@ -326,9 +404,10 @@
     @media (max-width: 520px) {
       .brand-name { display: none; }
       .nav .repo-link { padding-inline: 12px; }
-      .hero { min-height: 94svh; padding-inline: 18px; }
+      .hero { min-height: auto; padding-inline: 18px; }
       .hero-title { font-size: 18vw; }
       .hero-bottom { gap: 28px; }
+      .hero-cat { height: 54svh; min-height: 390px; margin-top: 16px; }
       .section { padding-inline: 18px; }
       .fix { grid-template-columns: 1fr; gap: 8px; }
       .project { border-radius: 16px; }
@@ -348,6 +427,9 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .loader { display: none; }
       .reveal { opacity: 1; transform: none; }
+      .cat-rig { animation: none; }
+      .cat-head-rig { transform: none; will-change: auto; }
+      .cat-pupil { transform: translate(-50%, -50%); will-change: auto; }
     }
   </style>
 </head>
@@ -388,16 +470,30 @@
         <span class="status">PUBLIC RELEASE · 新 Skill 已置顶 · MAIN 已部署</span>
         <span>FOUR INDEPENDENT PRESENTATION WORKFLOWS</span>
       </div>
-      <div class="kicker" style="margin-top:30px">Public preview · private skill archive</div>
-      <h1 class="hero-title">PPT Skill<span>合集预览版</span></h1>
-      <div class="hero-bottom">
-        <p class="lead">首页现在先显示<strong>公开仓库中的静态内容</strong>，不会同时加载多个大型 HTML iframe。完整演示仅在点击后按需打开，因此未登录 GitHub 的访客也能立即看到作品。</p>
-        <div class="hero-actions">
-          <a class="pill primary" href="#collection">查看四套展示 ↓</a>
-          <a class="pill" href="https://github.com/wang97870-creator/ppt-skill-collection-preview">Public Preview ↗</a>
+      <div class="hero-content">
+        <div class="kicker" style="margin-top:30px">Public preview · private skill archive</div>
+        <h1 class="hero-title">PPT Skill<span>合集预览版</span></h1>
+        <div class="hero-bottom">
+          <p class="lead">首页现在先显示<strong>公开仓库中的静态内容</strong>，不会同时加载多个大型 HTML iframe。完整演示仅在点击后按需打开，因此未登录 GitHub 的访客也能立即看到作品。</p>
+          <div class="hero-actions">
+            <a class="pill primary" href="#collection">查看四套展示 ↓</a>
+            <a class="pill" href="https://github.com/wang97870-creator/ppt-skill-collection-preview">Public Preview ↗</a>
+          </div>
+        </div>
+        <div style="margin-top:18px;color:#9d9d99;font-size:12px">公开：预览图片、HTML、PDF/PPT 示例。私有：Skill 源文件和下载压缩包。</div>
+      </div>
+    </div>
+    <div class="hero-cat" aria-hidden="true">
+      <div class="cat-rig">
+        <div class="cat-canvas">
+          <img class="cat-layer cat-body" src="assets/cat/ragdoll-cat-body-v2d.png" width="1024" height="1536" alt="" draggable="false" fetchpriority="high" decoding="async">
+          <div class="cat-head-rig">
+            <img class="cat-layer cat-head" src="assets/cat/ragdoll-cat-head-v2d.png" width="1024" height="1536" alt="" draggable="false" fetchpriority="high" decoding="async">
+            <span class="cat-eye cat-eye-left"><i class="cat-pupil"></i></span>
+            <span class="cat-eye cat-eye-right"><i class="cat-pupil"></i></span>
+          </div>
         </div>
       </div>
-      <div style="margin-top:18px;color:#9d9d99;font-size:12px">公开：预览图片、HTML、PDF/PPT 示例。私有：Skill 源文件和下载压缩包。</div>
     </div>
   </header>
 
@@ -564,12 +660,60 @@
       }, { threshold: .12 });
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-      const heroImage = document.querySelector('.hero-media img');
-      if (heroImage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        window.addEventListener('scroll', () => {
-          const offset = Math.min(window.scrollY * .08, 45);
-          heroImage.style.translate = `0 ${offset}px`;
+      const hero = document.querySelector('.hero');
+      const cat = document.querySelector('.hero-cat');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (hero && cat && !reducedMotion.matches && window.matchMedia('(min-width: 761px)').matches) {
+        const target = { x: 0, y: 0, rx: 0, ry: 0, rz: 0, eyeX: 0, eyeY: 0 };
+        const current = { x: 0, y: 0, rx: 0, ry: 0, rz: 0, eyeX: 0, eyeY: 0 };
+        let frame = 0;
+
+        const renderCat = () => {
+          current.x += (target.x - current.x) * .075;
+          current.y += (target.y - current.y) * .075;
+          current.rx += (target.rx - current.rx) * .075;
+          current.ry += (target.ry - current.ry) * .075;
+          current.rz += (target.rz - current.rz) * .075;
+          current.eyeX += (target.eyeX - current.eyeX) * .22;
+          current.eyeY += (target.eyeY - current.eyeY) * .22;
+          cat.style.setProperty('--cat-tx', `${current.x.toFixed(2)}px`);
+          cat.style.setProperty('--cat-ty', `${current.y.toFixed(2)}px`);
+          cat.style.setProperty('--cat-rx', `${current.rx.toFixed(2)}deg`);
+          cat.style.setProperty('--cat-ry', `${current.ry.toFixed(2)}deg`);
+          cat.style.setProperty('--cat-rz', `${current.rz.toFixed(2)}deg`);
+          cat.style.setProperty('--eye-x', `${current.eyeX.toFixed(2)}px`);
+          cat.style.setProperty('--eye-y', `${current.eyeY.toFixed(2)}px`);
+          frame = requestAnimationFrame(renderCat);
+        };
+
+        hero.addEventListener('pointermove', (event) => {
+          const rect = cat.getBoundingClientRect();
+          const faceX = rect.left + rect.width * .5;
+          const faceY = rect.top + rect.height * .48;
+          const nx = Math.max(-1, Math.min(1, (event.clientX - faceX) / (window.innerWidth * .5)));
+          const ny = Math.max(-1, Math.min(1, (event.clientY - faceY) / (window.innerHeight * .52)));
+          target.x = nx * 2.5;
+          target.y = ny * 2;
+          target.rx = -ny * 7;
+          target.ry = nx * 12;
+          target.rz = -nx * 2.2;
+          target.eyeX = nx * 4;
+          target.eyeY = ny * 3;
         }, { passive: true });
+
+        hero.addEventListener('pointerleave', () => {
+          target.x = 0;
+          target.y = 0;
+          target.rx = 0;
+          target.ry = 0;
+          target.rz = 0;
+          target.eyeX = 0;
+          target.eyeY = 0;
+        });
+
+        frame = requestAnimationFrame(renderCat);
+        window.addEventListener('pagehide', () => cancelAnimationFrame(frame), { once: true });
       }
     })();
   </script>
