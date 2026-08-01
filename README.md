@@ -1,4 +1,4 @@
-# PPT Skill 合集预览版 · Draft
+# PPT Skill 合集预览版
 
 这是四套彼此独立的演示 Skill 的公开效果预览站。Skill 源文件保存在 Private 仓库；本公开仓库只包含预览网页、图片和示例 PPTX/PDF。
 
@@ -26,4 +26,4 @@ Adaptive Hybrid Demo 按图片页脚编号排序：
 
 `01 Cover → 02 Contents → 03 City Profile → 04 Pilot 2 → 05 Pilot 3 → 06 Thanks`
 
-当前改动位于 `agent/advanced-visual-demo-v2` Draft 分支，未经用户确认不会合并到 `main`。
+当前版本已合并到 `main` 并通过 GitHub Pages 正式发布。
