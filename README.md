@@ -3,8 +3,8 @@
 这是四套彼此独立的演示 Skill 的公开效果预览站。Skill 源文件保存在 Private 仓库；本公开仓库只包含预览网页、图片和示例 PPTX/PDF。
 
 1. **Adaptive Hybrid Consulting Master**：通用 A01–A20 页型控制器与四区 Bain-style pilot module；展示六张按 01→06 排序的 PPT 图片。
-2. **Consulting Deck Studio**：科学图版、分层地理、流程、小多图与转换剖面的单文件 HTML。
-3. **Indonesia GIFF Workflow**：包含图层、情景滑块和来源抽屉的交互式 HTML。
+2. **Indonesia GIFF Workflow**：最终版 Indonesia GIFF HTML 的前 11 页公开节选，已移除封面组员名单。
+3. **Consulting Deck Studio**：科学图版、分层地理、流程、小多图与转换剖面的单文件 HTML。
 4. **Case Competition Profissional Deck**：A4 横版、原生可编辑 PowerPoint；提供 PPTX、PDF 和图片预览。
 
 ## 在线预览
@@ -26,4 +26,16 @@ Adaptive Hybrid Demo 按图片页脚编号排序：
 
 `01 Cover → 02 Contents → 03 City Profile → 04 Pilot 2 → 05 Pilot 3 → 06 Thanks`
 
-当前版本已合并到 `main` 并通过 GitHub Pages 正式发布。
+Indonesia GIFF Demo 按原始最终版顺序保留前 11 页：
+
+`Opening → Agenda → Thesis → Puzzle → Framework → Benchmark → Income → Geography → Opportunities → Constraints → FDI`
+
+## Demo 版权与使用范围
+
+本公开仓库中的原创 Demo 版式、视觉设计、演示文件和渲染资产 © JOY，保留所有权利。未经 JOY 书面许可，不得复制、转载、转售、重新托管或制作衍生发布版本。
+
+The original demo layouts, visual designs, presentation files, and rendered assets in this public repository are © JOY. All rights reserved. No reproduction, redistribution, resale, re-hosting, or derivative publication is permitted without written authorization from JOY.
+
+演示中引用的数据、商标、机构名称及第三方材料仍归各自权利人所有。本声明不扩大对第三方内容的权利主张。
+
+当前版本已经完成预览验收，并通过 `main` 分支发布至 GitHub Pages。
