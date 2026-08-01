@@ -109,13 +109,7 @@
       display: flex; align-items: end; padding: 150px clamp(22px, 5vw, 78px) 54px;
       border-bottom: 1px solid var(--line);
     }
-    .hero-media { position: absolute; inset: 0; }
-    .hero-media img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center;
-      filter: grayscale(1) contrast(1.1) brightness(.45);
-      transform: scale(1.05);
-      animation: heroDrift 12s ease-out both;
-    }
+    .hero-media { position: absolute; inset: 0; background: #000; }
     .hero-media::after {
       content: ""; position: absolute; inset: 0;
       background:
@@ -123,6 +117,7 @@
         linear-gradient(90deg, rgba(6,6,6,.9), transparent 72%);
     }
     .hero-glow {
+      display: none;
       position: absolute; width: 44vw; height: 44vw; right: -8vw; top: 12vh;
       border-radius: 50%; filter: blur(70px); opacity: .24;
       background: linear-gradient(135deg, var(--blue-a), var(--blue-deep));
@@ -385,9 +380,7 @@
   </div>
 
   <header class="hero" id="top">
-    <div class="hero-media" aria-hidden="true">
-      <img src="previews/adaptive-hybrid/slide-01.jpg" alt="">
-    </div>
+    <div class="hero-media" aria-hidden="true"></div>
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
     <div class="hero-inner">
@@ -463,6 +456,27 @@
           <div class="project-head">
             <div class="project-topline">
               <span class="project-num">02</span>
+              <span class="project-type">Interactive Indonesia GIFF · 11-page public excerpt</span>
+            </div>
+            <h3>Consulting HTML + PPT · Indonesia GIFF</h3>
+            <p class="project-desc">使用最终版 Indonesia GIFF HTML 的前 11 页公开展示，覆盖开场、议程、核心观点、GIFF 框架、基准、收入、地理、机会、约束与 FDI 转化；公开版已移除封面组员名单。</p>
+            <div class="actions">
+              <a class="button primary" href="https://github.com/wang97870-creator/consulting-html-ppt-skill/raw/refs/heads/main/skill-downloads/consulting-html-ppt-skill.zip">下载 Skill（私有）</a>
+              <a class="button output" href="previews/indonesia-giff/index.html">打开前 11 页 HTML</a>
+            </div>
+          </div>
+          <a class="visual standard-visual" href="previews/indonesia-giff/index.html">
+            <img src="assets/xuzhou-logistics-cover.jpg" loading="lazy" alt="徐州物流城市夜景">
+            <span class="visual-shade"></span>
+            <span class="visual-label"><span>GIFF 框架、产业走廊与 FDI 转化</span><span>OPEN 11-PAGE PREVIEW →</span></span>
+          </a>
+          <div class="preview-strip"><span>独立静态 HTML 按需打开；前 11 页均带 JOY 版权水印。</span><span>11 pages · Public URL</span></div>
+        </article>
+
+        <article class="project project-3 reveal">
+          <div class="project-head">
+            <div class="project-topline">
+              <span class="project-num">03</span>
               <span class="project-type">Scientific HTML deck</span>
             </div>
             <h3>Consulting Deck Studio</h3>
@@ -477,28 +491,7 @@
             <span class="visual-shade"></span>
             <span class="visual-label"><span>注册版式与科学图形语法</span><span>OPEN PUBLIC PREVIEW →</span></span>
           </a>
-          <div class="preview-strip"><span>完整 8.6MB 单文件 HTML 不再嵌入首页，只在点击时加载。</span><span>Load on demand</span></div>
-        </article>
-
-        <article class="project project-3 reveal">
-          <div class="project-head">
-            <div class="project-topline">
-              <span class="project-num">03</span>
-              <span class="project-type">Interactive evidence console</span>
-            </div>
-            <h3>Consulting HTML + PPT · Indonesia GIFF</h3>
-            <p class="project-desc">交互式证据控制台：补贴回报曲线、区域图层、敏感性滑块、微仓损益路径和 Source drawer。</p>
-            <div class="actions">
-              <a class="button primary" href="https://github.com/wang97870-creator/consulting-html-ppt-skill/raw/refs/heads/main/skill-downloads/consulting-html-ppt-skill.zip">下载 Skill（私有）</a>
-              <a class="button output" href="previews/indonesia-giff/index.html">打开公开 HTML</a>
-            </div>
-          </div>
-          <a class="visual standard-visual" href="previews/indonesia-giff/index.html">
-            <img src="assets/xuzhou-logistics-cover.jpg" loading="lazy" alt="徐州物流城市夜景">
-            <span class="visual-shade"></span>
-            <span class="visual-label"><span>图层、情景与来源追踪</span><span>OPEN PUBLIC PREVIEW →</span></span>
-          </a>
-          <div class="preview-strip"><span>交互预览保留公开独立 URL，首页不再预加载其大型资源。</span><span>Independent public URL</span></div>
+          <div class="preview-strip"><span>完整单文件 HTML 不嵌入首页，只在点击时加载。</span><span>Load on demand</span></div>
         </article>
 
         <article class="project project-4 reveal">
@@ -528,6 +521,7 @@
       <div class="access reveal" id="access">
         <div class="kicker">Access model</div>
         <p><strong>权限说明：</strong>展示页面与全部 Demo 是 Public；Skill ZIP 仍位于 Private 仓库。普通访客可以看作品，但不能下载 Skill 源文件。</p>
+        <p><strong>版权提示：</strong>本网站中的原创 Demo 版式、视觉设计与演示文件 © JOY，保留所有权利。未经书面许可，不得复制、转载、转售或制作衍生发布版本；引用的数据、商标与第三方材料仍归各自权利人所有。</p>
       </div>
     </section>
   </main>
@@ -571,7 +565,7 @@
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
       const heroImage = document.querySelector('.hero-media img');
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (heroImage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         window.addEventListener('scroll', () => {
           const offset = Math.min(window.scrollY * .08, 45);
           heroImage.style.translate = `0 ${offset}px`;
