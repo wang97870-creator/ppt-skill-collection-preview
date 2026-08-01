@@ -1,17 +1,29 @@
-# PPT Skill 合集预览版
+# PPT Skill 合集预览版 · Draft
 
-这是三套彼此独立的演示文稿 Skill 的公开效果预览站。预览载体不要求统一为 HTML：原生网页输出可以直接嵌入，PPTX 或 PDF 输出可以使用 PDF 阅读器或逐页渲染图片展示。三种工作流使用同一份《Joy Page 10–12》内容，分别展示：
+这是四套彼此独立的演示 Skill 的公开效果预览站。Skill 源文件保存在 Private 仓库；本公开仓库只包含预览网页、图片和示例 PPTX/PDF。
 
-- Consulting Deck Studio：注册版式与咨询编辑风 HTML；
-- Indonesia GIFF Workflow：证据驱动、带来源抽屉和情景交互的 HTML；
-- Case Competition Profissional Deck：A4 横版、高密度、原生可编辑 PowerPoint；网站展示的是 PPTX 的逐页渲染图片，不是该 Skill 生成的 HTML 演示。
+1. **Adaptive Hybrid Consulting Master**：通用 A01–A20 页型控制器与四区 Bain-style pilot module；展示六张按 01→06 排序的 PPT 图片。
+2. **Consulting Deck Studio**：科学图版、分层地理、流程、小多图与转换剖面的单文件 HTML。
+3. **Indonesia GIFF Workflow**：包含图层、情景滑块和来源抽屉的交互式 HTML。
+4. **Case Competition Profissional Deck**：A4 横版、原生可编辑 PowerPoint；提供 PPTX、PDF 和图片预览。
 
 ## 在线预览
 
-访问：<https://wang97870-creator.github.io/ppt-skill-collection-preview/>
+<https://wang97870-creator.github.io/ppt-skill-collection-preview/>
 
-## 隐私边界
+## 空白页面修复
 
-本仓库只发布网页、预览图片和本次示例 PPTX，不包含三套 Skill 的 `SKILL.md`、脚本、模板或压缩包。网页中的“下载 Skill”按钮指向私有仓库，只有获得该仓库访问权限并登录 GitHub 后才能下载。
+旧首页同时嵌入两份约 8.6MB 的 HTML 和一个图片查看器，慢网络或隐私浏览环境可能长时间显示空白框。新版首页不再使用 iframe：
 
-所有金额、时间表和效果数字均来自用户提供的示例讲稿，并在预览中标记为团队估算、情景值或建议目标，不代表已审计事实。
+- 首屏和项目卡片直接使用公开仓库中的静态 HTML、文字和图片；
+- 大型 HTML、PPT 图片查看器只在访客点击时加载；
+- 所有完整预览使用独立公开 URL；
+- 只有 Private Skill ZIP 下载仍需要仓库权限。
+
+## 图片顺序
+
+Adaptive Hybrid Demo 按图片页脚编号排序：
+
+`01 Cover → 02 Contents → 03 City Profile → 04 Pilot 2 → 05 Pilot 3 → 06 Thanks`
+
+当前改动位于 `agent/advanced-visual-demo-v2` Draft 分支，未经用户确认不会合并到 `main`。
